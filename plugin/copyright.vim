@@ -24,8 +24,17 @@ if !hasmapto('CopyrightUpdate')
 	nnoremap <F4> <Cmd>CopyrightUpdate<CR>
 endif
 
-g:file_copyright_name = 'Allan Downey'
-g:file_copyright_email = 'allandowney@126.com'
-g:file_copyright_company = 'AllanDowney'
+if !exists('g:file_copyright_name')
+	# g:file_copyright_name = 'Allan Downey'
+	g:file_copyright_name = 'Set g:file_copyright_name in $MYVIMRC'
+endif
+
+if !exists('g:file_copyright_email')
+	g:file_copyright_email = 'Set g:file_copyright_email in $MYVIMRC'
+endif
+
+if !exists('g:file_copyright_company')
+	g:file_copyright_company = 'Set g:file_copyright_company in $MYVIMRC'
+endif
 
 # vim: set fdm=indent
