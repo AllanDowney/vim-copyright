@@ -1,16 +1,16 @@
 vim9script
 
-# =========================================================
-#   Copyright (C) 2023 AllanDowney. All rights reserved.
+# ==========================================================
+#   Copyright (C) 2023 AllanDowney. All rights reserved.{{{1
 #
 #   File Name       : copyright.vim
 #   Author          : Allan Downey<allandowney@126.com>
 #   Version         : 0.1
 #   Create          : 2023-03-25 11:13
-#   Last Modified   : 2023-03-25 14:37
+#   Last Modified   : 2024-11-21 23:55
 #   Describe        :
-#
-# =========================================================
+#   }}}1
+# ==========================================================
 
 if g:->get('loaded_copyright')
 	finish

@@ -1,16 +1,16 @@
 vim9script
 
-# =========================================================
-#   Copyright (C) 2023 AllanDowney. All rights reserved.
+# ==========================================================
+#   Copyright (C) 2023 AllanDowney. All rights reserved.{{{1
 #
 #   File Name       : copyright.vim
 #   Author          : Allan Downey<allandowney@126.com>
 #   Version         : 0.1
 #   Create          : 2023-03-25 11:23
-#   Last Modified   : 2023-03-25 14:35
+#   Last Modified   : 2024-11-21 23:56
 #   Describe        :
-#
-# =========================================================
+#   }}}1
+# ==========================================================
 
 var cr_comment = {
 	vim: ['"', 0],
@@ -71,6 +71,7 @@ def CheckUpOrAdd(): bool
 enddef
 
 def AddCopyright(lline: number, prex: string): bool
+	var flty: string = CheckFiletype()
 	var startline = lline
 	if startline > 0
 		append(startline, '')
@@ -78,11 +79,12 @@ def AddCopyright(lline: number, prex: string): bool
 		startline = -1
 	endif
 	append(startline + 1, prex ..
-		' =========================================================')
+		' ===========================================================')
 	append(startline + 2, prex ..
 		'   Copyright (C) ' .. strftime('%Y') ..
 		' ' .. g:file_copyright_company ..
-		'. All rights reserved.')
+		'. All rights reserved.' ..
+		((flty =~ 'vim') ? '{{{1' : ''))
 	append(startline + 3, prex)
 	append(startline + 4, prex ..
         '   File Name       : ' .. expand('%:t'))
@@ -97,9 +99,10 @@ def AddCopyright(lline: number, prex: string): bool
 		'   Last Modified   : ' .. strftime('%Y-%m-%d %H:%M'))
 	append(startline + 9, prex ..
 		'   Describe        :')
-	append(startline + 10, prex)
+	append(startline + 10, prex ..
+		((flty =~ 'vim') ? '   }}}1' : ''))
 	append(startline + 11, prex ..
-		' =========================================================')
+		' ===========================================================')
 	append(startline + 12, '')
 	return v:true
 enddef
